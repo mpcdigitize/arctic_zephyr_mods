@@ -18,8 +18,11 @@ Reload skin or restart Kodi
 If you want to use Tall vietype then you will have to also disable under Furniture
 
  Show Header
+ 
  Show Clock
+ 
  Show media flags
+ 
  Show icon media flags
  
  
