@@ -26,4 +26,6 @@ If you want to use Tall vietype then you will have to also disable under Furnitu
  Show icon media flags
  
  
+ Additional mod:
+ 
  Home.xml -- removed Now Recording info 
