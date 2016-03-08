@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Foundation -->
+<includes>
+
+    <include name="View_576_LeftListTall">
+        <description>Left List Tall View (id=576)</description>
+        <control type="group">
+            <include>Animation.Common</include>
+            <visible>Control.IsVisible(576)</visible>
+            <control type="group">
+                <control type="list" id="576">
+                    <visible>Container.Content(musicvideos) | Container.Content(artists) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(actors) | Container.Content(sets)| Container.Content(seasons)</visible>
+                    <top>30</top>
+                    <height>970</height> 
+					<left>50</left>
+                    <width>1600</width>
+                    <onleft condition="!Skin.HasSetting(global.kioskmode)">9000</onleft>
+                    <onright>60</onright>
+                    <onup>576</onup>
+                    <ondown>576</ondown>
+                    <focusposition>3</focusposition>
+                    <movement>3</movement>
+                    <pagecontrol>60</pagecontrol>
+                    <viewtype label="Left List Tall">List</viewtype>
+                    <scrolltime tween="quadratic">400</scrolltime>
+                    <itemlayout width="1820" height="64">
+                        <include>myLayoutTall</include>
+                    </itemlayout>
+
+                    <focusedlayout width="1820" height="64">
+                        <control type="group">
+                            <visible>!Control.HasFocus(60)</visible>
+                            <include>myLayoutFocusedTall</include>
+                        </control>
+                        <control type="group">
+                            <visible>Control.HasFocus(60)</visible>
+                            <include>myLayoutFocusedTall</include>
+                        </control>
+                    </focusedlayout>
+                </control>
+				<include>Fanart_InfoT</include>
+				<include>Furniture_Clock_Edited</include>
+            </control>
+        </control>
+    </include>
+    <include name="View_575_LeftListTall_LowList">
+        <description>ExtraMusic View (id=576)</description>
+        <control type="group">
+            <include>Animation.Common</include>
+            <visible>Control.IsVisible(576)</visible>
+            <control type="group">
+                <posy>320</posy>
+                <control type="fixedlist" id="576">
+                    <visible>Container.Content(musicvideos) | Container.Content(artists) | Container.Content(movies) | Container.Content(tvshows) | [Container.Content(episodes) + !substring(Container.FolderPath,plugin://,left)] | Container.Content(actors) | Container.Content(sets) | Container.Content(seasons)</visible>
+                    <top>PosterPad</top>
+                    <height>320</height>
+                    <right>SidePad</right>
+                    <width>1100</width>
+                    <onleft condition="!Skin.HasSetting(global.kioskmode)">9000</onleft>
+                    <onright>60</onright>
+                    <onup>576</onup>
+                    <ondown>576</ondown>
+                    <focusposition>2</focusposition>
+                    <movement>2</movement>
+                    <pagecontrol>60</pagecontrol>
+                    <viewtype label="ExtraMusic">list</viewtype>
+                    <scrolltime tween="quadratic">400</scrolltime>
+                    <itemlayout width="1100" height="64">
+                        <include>50itemlayout</include>
+                    </itemlayout>
+
+                    <focusedlayout width="1100" height="64">
+                        <control type="group">
+                            <visible>!Control.HasFocus(60)</visible>
+                            <include>50focuslayout</include>
+                        </control>
+                        <control type="group">
+                            <visible>Control.HasFocus(60)</visible>
+                            <include>50itemlayout</include>
+                        </control>
+                    </focusedlayout>
+                </control>
+                <control type="scrollbar" id="60">
+                    <onback>50</onback>
+                    <centerright>60</centerright>
+                    <posy>PosterPad</posy>
+                    <height>320</height>
+                    <width>8</width>
+                    <onleft>50</onleft>
+                    <onright condition="!Skin.HasSetting(global.kioskmode)">9000</onright>
+                    <texturesliderbackground border="4" colordiffuse="Dark4">scrollbar/scrollv.png</texturesliderbackground>
+                    <texturesliderbar border="4" colordiffuse="Dark3">scrollbar/scrollv.png</texturesliderbar>
+                    <texturesliderbarfocus border="4" colordiffuse="Dark2">scrollbar/scrollv.png</texturesliderbarfocus>
+                    <animation effect="fade" start="100" end="33" time="400" condition="!Control.HasFocus(60) + !Container.Scrolling">Conditional</animation>
+                </control>
+            </control>
+            <include>LowList_Info</include>
+        </control>
+    </include>
+    <include name="LowList_Info">
+        <control type="group">
+            <right>70</right>
+            <width>645</width>
+            <top>206</top>
+            <height>660</height>
+            <control type="group">
+                <left>12</left>
+                <right>12</right>
+                <posy>319</posy>
+                <height>330</height>
+                
+                <control type="label">
+                    <top>10</top>
+                    <aligny>center</aligny>
+                    <height>64</height>
+                    <font>SmallBold</font>
+                    <textcolor>Dark1</textcolor>
+                    <selectedcolor>Dark1</selectedcolor>
+                    <label>$VAR[LabelDirector]</label>
+                </control>
+                <control type="label">
+                    <top>50</top>
+                    <height>64</height>
+                    <aligny>center</aligny>
+                    <font>Tiny</font>
+                    <textcolor>Dark1</textcolor>
+                    <selectedcolor>Dark1</selectedcolor>
+                    <label>$VAR[LabelGenre]</label>
+                </control>
+                <control type="textbox">
+                    <top>125</top>
+                    <bottom>17</bottom>
+                    <align>justify</align>
+                    <font>Tiny</font>
+                    <textcolor>Dark1</textcolor>
+                    <selectedcolor>Dark1</selectedcolor>
+                    <label>$VAR[LabelPlotBox]</label>
+                </control>
+            </control>
+        
+        </control>
+    </include>
+    <include name="Fanart_Info">
+        <control type="group">
+            <left>$PARAM[posx]</left>
+            <width>645</width>
+            <top>206</top>
+            <height>660</height>
+            <control type="group">
+                <height>370</height>
+                <visible>[!Skin.HasSetting(57list.low) + Control.IsVisible(576)] | !Control.IsVisible(576)</visible>
+                <visible>[!Skin.HasSetting(56media.low) + Control.IsVisible(56)] | !Control.IsVisible(56)</visible>
+                <control type="image">
+                    <width>100%</width>
+                    <height>100%</height>
+                    <texture border="10">common/nofocus-shadow10.png</texture>
+                </control>
+             
+                <control type="image">
+                    <left>10</left>
+                    <top>10</top>
+                    <right>10</right>
+                    <bottom>10</bottom>
+                    <fadetime>200</fadetime>
+                    <aspectratio align="center" aligny="center" scalediffuse="false">scale</aspectratio>
+                    <texture diffuse="diffuse/pvrinfo.png" background="true">$VAR[FanartImage]</texture>
+                </control>
+            </control>
+            <control type="group">
+                <left>20</left>
+                <right>20</right>
+                <posy>370</posy>
+                <height>290</height>
+                
+                <control type="label">
+                    <top>8</top>
+                    <aligny>center</aligny>
+                    <height>64</height>
+                    <font>SmallBold</font>
+                    <textcolor>Dark1</textcolor>
+                    <selectedcolor>Dark1</selectedcolor>
+                    <label>$VAR[LabelDirector]</label>
+                </control>
+                <control type="label">
+                    <top>48</top>
+                    <height>64</height>
+                    <aligny>center</aligny>
+                    <font>Tiny</font>
+                    <textcolor>Dark1</textcolor>
+                    <selectedcolor>Dark1</selectedcolor>
+                    <label>$VAR[LabelGenre]</label>
+                </control>
+                <control type="textbox">
+                    <top>116</top>
+                    <bottom>17</bottom>
+                    <align>justify</align>
+                    <font>Tiny</font>
+                    <textcolor>Dark1</textcolor>
+                    <selectedcolor>Dark1</selectedcolor>
+                    <label>$VAR[LabelPlotBox]</label>
+                </control>
+            </control>
+        
+        </control>
+        
+    </include>
+	<include name="myLayoutTall">
+        <control type="label">
+            <posx>60</posx>
+            <width>auto</width>
+            <aligny>center</aligny>
+            <height>64</height>
+            <font>SmallBold</font>
+            <label>$INFO[ListItem.Title] </label>
+            <textcolor>Dark1</textcolor>
+            <selectedcolor>Dark1</selectedcolor>
+            <visible>Container.Content(episodes)|Container.Content(seasons)</visible>
+        </control>
+		<control type="label">
+            <posx>60</posx>
+            <width>auto</width>
+            <aligny>center</aligny>
+            <height>64</height>
+            <font>SmallBold</font>
+            <label>$INFO[ListItem.Title]</label>
+            <textcolor>Dark1</textcolor>
+            <selectedcolor>Dark1</selectedcolor>
+            <visible>Container.Content(tvshows)</visible>
+        </control>
+		    <control type="image">
+			<posx>10</posx>
+            <centertop>32</centertop>
+            <width>32</width>
+            <height>32</height>
+            <aspectratio aligny="top">keep</aspectratio>
+            <texture>$VAR[PercentWatched]</texture>
+			<visible>Container.Content(episodes)|Container.Content(tvshows)|Container.Content(seasons)</visible>
+        </control>
+		    
+
+
+    </include>
+	<include name="myLayoutFocusedTall">
+        <control type="label">
+            <posx>60</posx>
+            <width>auto</width>
+            <aligny>center</aligny>
+            <height>64</height>
+            <font>MediumBold</font>
+            <label>$INFO[ListItem.Title] </label>
+            <textcolor>FF00FFFF</textcolor>
+            <selectedcolor>FF00FFFF</selectedcolor>
+            <visible>Container.Content(episodes)</visible>
+        </control>
+		<control type="label">
+            <posx>60</posx>
+            <width>auto</width>
+            <aligny>center</aligny>
+            <height>64</height>
+            <font>LargeBold</font>
+            <label>$INFO[ListItem.Title]</label>
+            <textcolor>FF00FFFF</textcolor>
+            <selectedcolor>FF00FFFF</selectedcolor>
+            <visible>Container.Content(tvshows)|Container.Content(seasons)</visible>
+        </control>
+		<control type="image">
+			<posx>10</posx>
+            <centertop>32</centertop>
+            <width>32</width>
+            <height>32</height>
+            <aspectratio aligny="top">keep</aspectratio>
+            <texture>$VAR[PercentWatched]</texture>
+			<visible>Container.Content(episodes)|Container.Content(tvshows)|Container.Content(seasons)</visible>
+        </control>
+    </include>
+	<include name="L1">
+        <control type="image">                                
+            <width>100%</width>
+            <height>100%</height>
+            <texture border="8" colordiffuse="Dark1">common/box.png</texture>
+        </control>
+        <control type="label">
+            <posx>30</posx>
+            <width>200</width>
+            <font>Small</font>
+            <aligny>center</aligny>
+            <height>64</height>
+            <textcolor>Light1</textcolor>
+            <selectedcolor>Light1</selectedcolor>
+            <label>$VAR[LabelYear]</label>
+            <visible>Container.Content(movies)</visible>
+        </control>
+        <control type="label">
+            <posx>120</posx>
+            <width>auto</width>
+            <aligny>center</aligny>
+            <height>64</height>
+            <font>SmallBold</font>
+            <textcolor>Light1</textcolor>
+            <selectedcolor>Light1</selectedcolor>
+            <label>$INFO[ListItem.Title], $INFO[ListItem.Plot]</label>
+            <animation effect="slide" start="0" end="-90" time="0" condition="!Container.Content(movies)">Conditional</animation>
+            <visible>!Container.Content(episodes) + !Container.Content(tvshows)</visible>
+        </control>
+        <control type="label">
+            <posx>30</posx>
+            <width>auto</width>
+            <aligny>center</aligny>
+            <height>64</height>
+            <font>SmallBold</font>
+            <textcolor>Light1</textcolor>
+            <selectedcolor>Light1</selectedcolor>
+            <label>$INFO[ListItem.tvShowTitle] - $INFO[ListItem.Title]</label>
+            <visible>Container.Content(episodes)</visible>
+        </control>
+		 <control type="label">
+            <posx>30</posx>
+            <width>auto</width>
+            <aligny>center</aligny>
+            <height>64</height>
+            <font>SmallBold</font>
+            <textcolor>Light1</textcolor>
+            <selectedcolor>Light1</selectedcolor>
+            <label>$INFO[ListItem.Title]</label>
+            <visible>Container.Content(tvshows)</visible>
+        </control>
+
+    </include>
+    <include name="Fanart_InfoT">   
+			 <control type="textbox">
+                    <top>580</top>
+					<left>800</left>
+					<width>500</width>
+					<height>220</height>
+                    <align>justify</align>
+                    <font>Tiny</font>
+                    <textcolor>Dark1</textcolor>
+                    <selectedcolor>Dark1</selectedcolor>
+                    <label>$VAR[LabelPlotBox1]</label>
+					<visible>Container.Content(episodes)</visible>
+            </control>
+			 <control type="label">
+                    <top>800</top>
+					<left>1350</left>
+					<width>1000</width>
+                    <height>64</height>
+                    <aligny>center</aligny>
+                    <font>Tiny</font>
+                    <textcolor>Dark1</textcolor>
+                    <selectedcolor>Dark1</selectedcolor>
+                    <label>$VAR[LabelGenre]</label>
+					<visible>Container.Content(tvshows)</visible>
+            </control>
+			<control type="textbox">
+                    <top>880</top>
+					<left>1350</left>
+					<width>500</width>
+					<height>125</height>
+                    <align>justify</align>
+                    <font>Tiny</font>
+                    <textcolor>Dark1</textcolor>
+                    <selectedcolor>Dark1</selectedcolor>
+                    <label>$VAR[LabelPlotBox]</label>
+					<visible>Container.Content(tvshows)</visible>
+            </control>
+			<control type="textbox">
+                    <top>880</top>
+					<left>960</left>
+					<width>500</width>
+					<height>125</height>
+                    <align>justify</align>
+                    <font>Tiny</font>
+                    <textcolor>Dark1</textcolor>
+                    <selectedcolor>Dark1</selectedcolor>
+                    <label>$VAR[LabelPlotBox]</label>
+					<visible>Container.Content(episodes)</visible>
+            </control>
+			<control type="label">
+                    <top>800</top>
+					<left>960</left>
+					<width>1000</width>
+                    <height>64</height>
+                    <aligny>center</aligny>
+                    <font>Tiny</font>
+                    <textcolor>Dark1</textcolor>
+                    <selectedcolor>Dark1</selectedcolor>
+                    <label>$VAR[LabelGenre]</label>
+					<visible>Container.Content(episodes)</visible>
+            </control>
+			<control type="label">
+                    <top>50</top>
+					<right>50</right>
+					<width>400</width>
+                    <height>64</height>
+                    <aligny>right</aligny>
+                    <font>Tiny</font>
+                    <textcolor>Dark1</textcolor>
+                    <selectedcolor>Dark1</selectedcolor>
+                    <label>$INFO[System.Date(DDD)]$COMMA $INFO[System.Date(d MMM yyyy)]</label>
+					<visible>Container.Content(episodes1)</visible>
+            </control>
+			<control type="image">
+					<width>19%</width>
+			        <height>19%</height>
+                    <right>50</right>
+                    <bottom>65</bottom>
+                    <fadetime>200</fadetime>
+                    <aspectratio align="center" aligny="center" scalediffuse="false">scale</aspectratio>
+                    <texture diffuse="diffuse/pvrinfo.png" background="true">$VAR[FanartImage]</texture>
+					<visible>Container.Content(episodes)</visible>
+            </control>
+			     
+    </include>
+	
+	
+	
+</includes>
